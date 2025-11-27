@@ -494,24 +494,27 @@ $(document).ready(function(){
         objcha = JSON.parse(getLocal);
         console.log(objcha)
     }
+	// each vong lap (for), lap qua tung the TR 
 	function updateCartTotals() {
     var subtotal = 0;
-    
 
     $("tbody tr").each(function() {
         var totalText = $(this).find(".cart_total_price").text().replace("$", "");
-        var total = parseFloat(totalText);
-        if (total) {
-            subtotal += total;
+        var totalPrice = parseFloat(totalText);
+
+        if (totalPrice) {
+            subtotal += totalPrice;  
         }
     });
-    
-   
-    var grandTotal = subtotal 
+
+    var grandTotal = subtotal;
+
     $(".total_area ul").html(
         '<li>Total <span id="newtotal">$' + grandTotal + '</span></li>'
     );
 }
+
+    
 
     var xx = "";
     Object.keys(objcha).map((key, index) => {
@@ -649,7 +652,26 @@ $(document).ready(function(){
         localStorage.setItem("cart", save);
 		 updateCartTotals();
 		})
+	
+		
+		$(".total_area ul").ready(function(){
+   		var subtotal = 0;
+    
+    	$(".cart_total_price").each(function() {
+        var total = $(this).text().replace("$", "");
+        var newtotal = parseFloat(total);
 
+        if(newtotal){
+            subtotal += newtotal;
+        }
+    });
+    
+   
+    	$(".total_area ul").html(
+			'<li>Total <span id="newtotal">$' + subtotal + '</span></li>');
+	
+    	console.log("Tong hien tai:", subtotal);
+});
 
 	})
 	
