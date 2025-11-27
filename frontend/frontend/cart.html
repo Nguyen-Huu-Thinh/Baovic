@@ -496,11 +496,11 @@ $(document).ready(function(){
     }
 	// each vong lap (for), lap qua tung the TR 
 	function updateCartTotals() {
-    var subtotal = 0;
+    var subtotal = 0; //Goi tong = 0
 
     $("tbody tr").each(function() {
-        var totalText = $(this).find(".cart_total_price").text().replace("$", "");
-        var totalPrice = parseFloat(totalText);
+        var totalText = $(this).find(".cart_total_price").text().replace("$", ""); // tim cai the
+        var totalPrice = parseFloat(totalText); // chuyen doi chuooi thanh so
 
         if (totalPrice) {
             subtotal += totalPrice;  
@@ -509,7 +509,7 @@ $(document).ready(function(){
 
     var grandTotal = subtotal;
 
-    $(".total_area ul").html(
+    $(".total_area ul").html( // timf cai class total_area trong cai the ul, sau do html se lay cai o duoi thay thanh cai moi trong the ul
         '<li>Total <span id="newtotal">$' + grandTotal + '</span></li>'
     );
 }
